@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='yolog',
-    version='0.1.3',
+    version='0.2.0',
     description='Beautify your git logs!',
     url='http://github.com/karandesai-96/yolog',
     author='Karan Desai',

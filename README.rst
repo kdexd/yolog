@@ -31,7 +31,9 @@ To obtain the bleeding edge version, clone the repo and build it from source:
 Usage
 -----
 
-To view yolog powered git log, simply execute ``yolog`` in terminal.
+* To view yolog powered git log, simply execute ``yolog`` in terminal.
+
+* For brief instructions, execute ``yolog -h`` or ``yolog --help`` in terminal.
 
 It also accepts arguments which are used to filter output. 
 These arguments are same as those accepted by standard git log.
@@ -55,7 +57,7 @@ Here are the most common used ones:
 +-----------------------------------+                                                         |
 | ``yolog --since=dd-mmm-yyyy``     |                                                         |
 +-----------------------------------+---------------------------------------------------------+
-| ``yolog --grep="foo\ bar"         | Display commits with "foo bar" in their description.    |
+| ``yolog --grep="foo\ bar"``       | Display commits with "foo bar" in their description.    |
 +-----------------------------------+---------------------------------------------------------+
 
 * Any of these can be combined together and used.

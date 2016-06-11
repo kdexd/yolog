@@ -27,7 +27,10 @@ class YologGenerator(object):
             self._hash, self._author, self._date, self._refs, self._description
         )
 
-    def git_command(self):
-        return(
-            "git log --pretty=\"tformat:{0}\" --graph --all $* | "
-            "column -t -s \";;\" | less -FXRS".format(self._format))
+    def git_command(self, git_arguments):
+        return (
+            "git log --pretty=\"tformat:{0}\" --graph --all {1} | "
+            "column -t -s \";;\" | less -FXRS".format(
+                self._format, git_arguments
+            )
+        )

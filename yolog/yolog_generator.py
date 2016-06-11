@@ -1,5 +1,3 @@
-import os
-
 RESET  = "$(tput sgr0)"
 BACKSPACE = "%x08"
 
@@ -29,13 +27,7 @@ class YologGenerator(object):
             self._hash, self._author, self._date, self._refs, self._description
         )
 
-    def set_gitconfig_alias(self):
-        os.system(
-            "git config --global alias.yolog "
-            "'!git log --pretty=\"tformat:{0}\" --graph --all $* | "
-            "column -t -s \";;\" | less -FXRS'".format(self._format))
-
-    @staticmethod
-    def unset_gitconfig_alias(self):
-        os.system(
-            "git config --global --unset alias.yolog")
+    def git_command(self):
+        return(
+            "git log --pretty=\"tformat:{0}\" --graph --all $* | "
+            "column -t -s \";;\" | less -FXRS".format(self._format))

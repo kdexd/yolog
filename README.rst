@@ -7,13 +7,13 @@ Beautify your git logs !
 
 Here is how default git logs look like:
 
-.. image:: http://raw.githubusercontent.com/karandesai-96/yolog/master/docs/original.png
+.. image:: https://raw.githubusercontent.com/karandesai-96/yolog/master/docs/ordinary.png
 
 Yolog wraps over standard git log and represents commit message history in a compact 
 manner. It provides a visualization of commit graph, and shows refs, tags and unmerged 
 branches altogether. A yolog powered git log looks like this:
 
-.. image:: http://raw.githubusercontent.com/karandesai-96/yolog/master/docs/yolog-powered.png
+.. image:: https://raw.githubusercontent.com/karandesai-96/yolog/master/docs/yolog-powered.png
 
 
 Installation

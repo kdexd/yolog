@@ -15,47 +15,66 @@ branches altogether. A yolog powered git log looks like this:
 
 .. image:: http://raw.githubusercontent.com/karandesai-96/yolog/master/docs/yolog-powered.png
 
+
 Installation
 ------------
 Obtain stable release from PyPI
 ::
   pip install yolog
 
-Perform this manual configuration for the first time, by opening python command line:
-
-.. code-block:: python
-
-  import yolog
-  yolog.configure()
-
-For turning it off/ uninstalling, open python command line and unconfigure in same manner:
-
-.. code-block:: python
-
-  import yolog
-  yolog.unconfigure()
+To obtain the bleeding edge version, clone the repo and build it from source:
+::
+  git clone https://www.github.com/karandesai-96/yolog
+  cd yolog && python setup.py build
 
 
 Usage
 -----
 
-To view yolog powered git log, simply execute ``git yolog`` in terminal.
+To view yolog powered git log, simply execute ``yolog`` in terminal.
 
 It also accepts arguments which are used to filter output. 
-These arguments are same as those accepted by standard git log, for example:
-::
-  git yolog -11                     // show recent eleven commits
-  git yolog --skip=11               // skip recent eleven commits
-  git yolog --since="3 weeks ago"
-  git yolog --after="28 Nov 2016"
-  git yolog --author="Karan Desai"
+These arguments are same as those accepted by standard git log.
+Here are the most common used ones:
 
-... and many more, refer `git-log documentation <https://git-scm.com/docs/git-log>`_ 
-for more info about these arguments.
++-----------------------------------+---------------------------------------------------------+
+|          Command Example          |                      Description                        |
++===================================+=========================================================+
+| ``yolog -n``                      | Display recent ``n`` commits.                           |
++-----------------------------------+---------------------------------------------------------+
+| ``yolog --skip=n``                | Skip recent ``n`` commits and display further.          |
++-----------------------------------+---------------------------------------------------------+
+| ``yolog --author=karan``          | Filter commits according to author. Part of name / whole|
+|                                   | will be accepted.                                       |
++-----------------------------------+---------------------------------------------------------+
+| ``yolog --before=dd-mmm-yyyy``    | Display commits before this date.                       |
++-----------------------------------+                                                         |
+| ``yolog --until=dd/mmm/yyyy``     |                                                         |
++-----------------------------------+---------------------------------------------------------+
+| ``yolog --after=dd/mmm/yyyy``     | Display commits after this date.                        |
++-----------------------------------+                                                         |
+| ``yolog --since=dd-mmm-yyyy``     |                                                         |
++-----------------------------------+---------------------------------------------------------+
+| ``yolog --grep="foo\ bar"         | Display commits with "foo bar" in their description.    |
++-----------------------------------+---------------------------------------------------------+
+
+* Any of these can be combined together and used.
+* Regular expressions are also accepted in ``grep`` and ``author``.
+* Use escape character if using whitespace: ``yolog --grep="fixes\ bug"``
 
 Features
 --------
 
-- Tabulated commit history with shortened hashes, author, date and commit message (refs included if peresnt).
+- Tabulated commit history with shortened hashes, author, date and commit message (refs included if present).
 - Colored fields for better readability, with visualization of commit graph.
 - Vertical as well as horizontol pagination for longer commit history / smaller terminal window.
+
+Contributing
+------------
+
+Feel free to file bugs, ask questions and suggest enhancements through Issues and Pull Requests !
+
+License
+-------
+
+Yolog is released under MIT 2016 License.

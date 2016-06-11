@@ -9,5 +9,8 @@ setup(
     author_email='karandesai281196@gmail.com',
     license='MIT',
     packages=['yolog'],
+    entry_points = {
+    	'console_scripts': ['yolog = yolog.main:main']
+    },
     zip_safe=True
 )

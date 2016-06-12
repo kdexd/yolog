@@ -42,7 +42,7 @@ Usage: yolog [<additional optional commands>]
 
 def main():
     git_arguments = sys.argv[1:]
-    if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+    if git_arguments and (sys.argv[1] == "-h" or sys.argv[1] == "--help"):
         print help_description
     else:
         os.system(yolog_gen.git_command(" ".join(git_arguments)))

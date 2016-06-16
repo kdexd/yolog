@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 from yolog.yolog_generator import YologGenerator
@@ -43,6 +44,6 @@ Usage: yolog [<additional optional commands>]
 def main():
     git_arguments = sys.argv[1:]
     if git_arguments and (sys.argv[1] == "-h" or sys.argv[1] == "--help"):
-        print help_description
+        print(help_description)
     else:
         os.system(yolog_gen.git_command(" ".join(git_arguments)))

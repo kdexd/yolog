@@ -1,4 +1,15 @@
+import os
+import shutil
+import sys
 from setuptools import setup
+
+config_dirpath = os.path.expandvars(os.path.expanduser("~/.yolog"))
+
+if os.path.exists(config_dirpath):
+    shutil.rmtree(config_dirpath)
+
+if sys.argv[1] in {"build", "install", "develop"}:
+    os.mkdir(config_dirpath)
 
 setup(
     name='yolog',

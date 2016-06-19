@@ -10,13 +10,13 @@ class ConfigHandler(object):
         self.config = SafeConfigParser()
         self.config.read(self.path)
 
-    def set_color(attribute, color):
+    def set_color(self, attribute, color):
         if attribute not in {"author", "date", "description", "hash", "refs"}:
             print("{0}: Invalid attribute !".format(attribute))
         elif color not in {"WHITE", "BLACK", "RED", "GREEN", "CYAN", "BLUE", "PURPLE"}:
             print("{0}: Invalid color !".format(color))
         else:
             self.config.set("color", attribute, color)
-            with open(path, 'w') as f:
+            with open(self.path, 'w') as f:
                 self.config.write(f)
             print("Changed Successefully")

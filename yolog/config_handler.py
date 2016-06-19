@@ -13,10 +13,10 @@ class ConfigHandler(object):
     def set_color(self, attribute, color):
         if attribute not in {"author", "date", "description", "hash", "refs"}:
             print("{0}: Invalid attribute !".format(attribute))
-        elif color not in {"WHITE", "BLACK", "RED", "GREEN", "CYAN", "BLUE", "PURPLE"}:
+        elif color not in {"WHITE", "BLACK", "RED", "GREEN", "CYAN", "BLUE", "PURPLE", "YELLOW"}:
             print("{0}: Invalid color !".format(color))
         else:
             self.config.set("color", attribute, color)
             with open(self.path, 'w') as f:
                 self.config.write(f)
-            print("Changed Successefully")
+            print("Changed Successfully !")

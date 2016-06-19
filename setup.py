@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import shutil
 import sys
@@ -35,3 +36,6 @@ setup(
     },
     zip_safe=True
 )
+
+print("If you installed with sudo privileges, current owner of ~/.yolog directory "
+      "would be root. Please change the owner to user for better experience. ")

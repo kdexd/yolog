@@ -1,7 +1,6 @@
 from __future__ import print_function
 from ConfigParser import SafeConfigParser
 import os
-import sys
 
 
 class ConfigHandler(object):
@@ -13,10 +12,11 @@ class ConfigHandler(object):
     def set_color(self, attribute, color):
         if attribute not in {"author", "date", "description", "hash", "refs"}:
             print("{0}: Invalid attribute !".format(attribute))
-        elif color not in {"WHITE", "BLACK", "RED", "GREEN", "CYAN", "BLUE", "PURPLE", "YELLOW"}:
+        elif color.upper() not in {"WHITE", "BLACK", "RED", "GREEN",
+                           "CYAN", "BLUE", "PURPLE", "YELLOW"}:
             print("{0}: Invalid color !".format(color))
         else:
-            self.config.set("color", attribute, color)
+            self.config.set("color", attribute, color.upper())
             with open(self.path, 'w') as f:
                 self.config.write(f)
             print("Changed Successfully !")

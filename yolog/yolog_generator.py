@@ -1,6 +1,6 @@
 from ConfigParser import SafeConfigParser
 import os
-import sys
+
 
 RESET  = "$(tput sgr0)"
 BACKSPACE = "%x08"

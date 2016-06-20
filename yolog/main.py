@@ -2,8 +2,7 @@ from __future__ import print_function
 import os
 import sys
 from yolog.yolog_generator import YologGenerator
-
-yolog_gen = YologGenerator()
+from yolog.config_handler import ConfigHandler
 
 help_description = ("""
 Yolog - Beautify your Git logs !
@@ -43,7 +42,15 @@ Usage: yolog [<additional optional commands>]
 
 def main():
     git_arguments = sys.argv[1:]
-    if git_arguments and (sys.argv[1] == "-h" or sys.argv[1] == "--help"):
-        print(help_description)
+    if git_arguments:
+        if sys.argv[1] in {"-h", "--help", "help"}:
+            print(help_description)
+        elif sys.argv[1] in {"-c", "--config", "config"}:
+            config_handler = ConfigHandler("~/.yolog/config.ini")
+            config_handler.set_color(sys.argv[2], sys.argv[3])
+        else:
+            yolog_gen = YologGenerator("~/.yolog/config.ini")
+            os.system(yolog_gen.git_command(" ".join(git_arguments)))
     else:
-        os.system(yolog_gen.git_command(" ".join(git_arguments)))
+        yolog_gen = YologGenerator("~/.yolog/config.ini")
+        os.system(yolog_gen.git_command(" "))

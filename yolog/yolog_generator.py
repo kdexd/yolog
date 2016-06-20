@@ -1,3 +1,7 @@
+from ConfigParser import SafeConfigParser
+import os
+
+
 RESET  = "$(tput sgr0)"
 BACKSPACE = "%x08"
 
@@ -12,16 +16,25 @@ class YologGenerator(object):
     CYAN   = "$(tput bold)$(tput setaf 6)"
     WHITE  = "$(tput setaf 7)"
 
-    def __init__(self):
-        self._hash = "{0}%h{1}".format(self.YELLOW, RESET)
+    def __init__(self, path):
+        self.config = SafeConfigParser()
+        self.path = os.path.expandvars(os.path.expanduser(path))
+        self.config.read(self.path)
 
-        self._author = "{0}%an{1}".format(self.BLUE, RESET)
+        self._hash = "{0}%h{1}".format(
+            getattr(self, self.config.get("color", "hash")), RESET)
 
-        self._date = "{0}%aD{1}{2}".format(self.GREEN, BACKSPACE * 15, RESET)
+        self._author = "{0}%an{1}".format(
+            getattr(self, self.config.get("color", "author")), RESET)
 
-        self._refs = "{0}%d{1}".format(self.RED, RESET)
+        self._date = "{0}%aD{1}{2}".format(
+            getattr(self, self.config.get("color", "date")), BACKSPACE * 15, RESET)
 
-        self._description = "{0}%s{1}".format(self.WHITE, RESET)
+        self._refs = "{0}%d{1}".format(
+            getattr(self, self.config.get("color", "refs")), RESET)
+
+        self._description = "{0}%s{1}".format(
+            getattr(self, self.config.get("color", "description")), RESET)
 
         self._format = "{0};;{1};;{2};;{3} {4}".format(
             self._hash, self._author, self._date, self._refs, self._description
@@ -33,4 +46,4 @@ class YologGenerator(object):
             "column -t -s \";;\" | less -FXRS".format(
                 self._format, git_arguments
             )
-        )
+        ) 

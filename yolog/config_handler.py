@@ -1,6 +1,10 @@
 from __future__ import print_function
-from ConfigParser import SafeConfigParser
 import os
+try:
+    from ConfigParser import SafeConfigParser
+except ImportError:
+    from configparser import SafeConfigParser
+
 
 
 class ConfigHandler(object):

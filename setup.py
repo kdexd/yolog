@@ -3,7 +3,10 @@ import os
 import shutil
 import sys
 from setuptools import setup
-from ConfigParser import SafeConfigParser
+try:
+    from ConfigParser import SafeConfigParser
+except ImportError:
+    from configparser import SafeConfigParser
 
 config_dirpath = os.path.expandvars(os.path.expanduser("~/.yolog"))
 

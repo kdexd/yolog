@@ -1,4 +1,7 @@
-__author__ = "Karan Desai"
-__email__ = "karandesai281196@gmail.com"
-__version__ = "0.2.2"
-__license__ = "MIT"
+__name__ = 'yolog'
+__version__ = '0.3'
+__description__ = 'Beautify your Git Logs !'
+__url__ = 'https://www.github.com/karandesai-96/yolog'
+__author__ = 'Karan Desai'
+__email__ = 'karandesai281196@gmail.com'
+__license__ = 'MIT'

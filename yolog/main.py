@@ -47,7 +47,7 @@ def main():
             print(help_description)
         elif sys.argv[1] in {"-c", "--config", "config"}:
             config_handler = ConfigHandler("~/.yolog/config.ini")
-            config_handler.set_color(sys.argv[2], sys.argv[3])
+            config_handler.update_color(sys.argv[2], sys.argv[3])
         else:
             yolog_gen = YologGenerator("~/.yolog/config.ini")
             os.system(yolog_gen.git_command(" ".join(git_arguments)))

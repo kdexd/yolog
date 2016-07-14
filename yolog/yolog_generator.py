@@ -10,37 +10,53 @@ BACKSPACE = "%x08"
 
 help_description = ("""
 {yellow}Yolog - Beautify your Git logs !
-{white}--------------------------------
-{cyan}Usage: yolog [<additional optional commands>]
+{white}================================
+{cyan}Author: {author}
+{cyan}Version: {version}
+{cyan}Usage: yolog [-h|--help] [-c|--config attribute COLOR]
+{cyan}             [<additional commands>]
 
-{green}1. yolog -n
-{white}-      Display recent n commits.
+{yellow}HELP MESSAGE
+{white}------------
 
-{green}2. yolog --skip=n
-{white}-      Skip recent n commits and display further.
+{green}    -h or --help
+{white}        Display this help description.
 
-{green}3. yolog --author=john
-{white}-      Filter commits according to author.
-{white}       Part of name / whole will be accepted.
+{yellow}COLOR CHANGING
+{white}--------------
 
-{green}4. yolog --before=dd-mmm-yyyy
-{green}   yolog --until=dd/mmm/yyyy
-{white}-      Display commits before this date.
+{green}    -c attribute COLOR or --config attribute COLOR
+{white}        Change color of 'attribute' to 'COLOR'.
+{white}        attribute: author, date, description, hash, refs
+{white}        COLOR: RED, GREEN, YELLOW, BLUE, CYAN, PURPLE, BLACK, WHITE
 
-{green}5. yolog --after=dd/mmm/yyyy
-{green}   yolog --since=dd-mmm-yyyy
-{white}-      Display commits after this date.
+{yellow}ADDITIONAL COMMANDS
+{white}-------------------
 
-{green}6. yolog --grep="foo\ bar"
-{white}-      Display commits with "foo bar" in their description.
+{green}    -N or -n N
+{white}        Display recent n commits.
 
-{green}7. yolog --help
-{green}   yolog -h
-{white}-      Display this instruction.
+{green}    --skip N
+{white}        Skip recent N commits and display further.
 
-{cyan}* Any of these can be combined together and used.
-{cyan}* Regular expressions are also accepted in grep and author.
-{cyan}* Use escape character if using whitespace: yolog --grep="fixes\ bug"
+{green}    --author "john\ doe"
+{white}        Filter commits according to name of author.
+{white}        Part of name / whole will be accepted.
+
+{green}    --before DD-MMM-YYYY or --until DD/MMM/YYYY
+{white}        Display commits before this date.
+{white}        Hyphen(-) and forward slash(/) can be used interchangeably.
+
+{green}    --after DD/MMM/YYYY or --since DD-MMM-YYYY
+{white}        Display commits after this date.
+{white}        Hyphen(-) and forward slash(/) can be used interchangeably.
+
+{green}    --grep "foo\ bar"
+{white}        Display commits with "foo bar" in their description.
+
+{cyan}    * Any of these can be combined together and used.
+{cyan}    * Regular expressions are also accepted in grep and author.
+{cyan}    * Use escape character if using whitespace: yolog --grep="fixes\ bug"
 {reset}""")
 
 
@@ -89,7 +105,12 @@ class YologGenerator(object):
     def print_help(self):
         return (
             "echo \"{0}\" | less -RS".format(help_description.format(
-                yellow=self.YELLOW, green=self.GREEN, cyan=self.CYAN,
-                white=self.WHITE, reset=RESET
+                author=__import__('yolog').__author__,
+                version=__import__('yolog').__version__,
+                yellow=self.YELLOW,
+                green=self.GREEN,
+                cyan=self.CYAN,
+                white=self.WHITE,
+                reset=RESET
             ))
         )

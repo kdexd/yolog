@@ -30,5 +30,5 @@ class ConfigHandler(object):
             with open(self.path, 'w') as f:
                 self.config_parser.write(f)
             print("Updated {0} color of {1} attribute successfully !".format(
-                attribute, color
+                color.upper(), attribute.lower()
             ))

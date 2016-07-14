@@ -27,12 +27,12 @@ if sys.argv[1] in {"build", "install", "develop"}:
 
 setup(
     name='yolog',
-    version='0.2.2',
-    description='Beautify your git logs!',
-    url='http://github.com/karandesai-96/yolog',
-    author='Karan Desai',
-    author_email='karandesai281196@gmail.com',
-    license='MIT',
+    version=__import__('yolog').__version__,
+    description=__import__('yolog').__description__,
+    url=__import__('yolog').__url__,
+    author=__import__('yolog').__author__,
+    author_email=__import__('yolog').__email__,
+    license=__import__('yolog').__license__,
     packages=['yolog'],
     entry_points={
         'console_scripts': ['yolog = yolog.main:main']

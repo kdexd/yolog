@@ -1,7 +1,14 @@
 YoLog !
 =======
 .. image:: https://badge.fury.io/py/yolog.png
-  :target: https://badge.fury.io/py/yolog
+        :target: https://badge.fury.io/py/yolog
+        :alt: Latest Version
+.. image:: https://img.shields.io/pypi/dm/yolog.svg
+        :target: https://badge.fury.io/py/yolog
+        :alt: Downloads
+.. image:: https://img.shields.io/pypi/l/yolog.svg
+        :target: https://badge.fury.io/py/yolog
+        :alt: License
 
 Beautify your git logs !
 

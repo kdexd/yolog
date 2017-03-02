@@ -12,7 +12,7 @@ YoLog !
 
 Beautify your git logs !
 
-Here is how default git logs look like:
+Git logs look like this by default:
 
 .. image:: https://raw.githubusercontent.com/karandesai-96/yolog/master/docs/ordinary.png
 
